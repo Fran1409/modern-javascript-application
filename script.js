@@ -1,4 +1,4 @@
-//TODO: clean up code
+
 
 (() => {
 
@@ -10,7 +10,7 @@
     let day = date.toISOString();
     let tomorrow = day.slice(0,10);
     
-    
+    //When site is loaded, default city is selected
     window.onload = function() {
         city = "Brussel";
 
@@ -18,6 +18,7 @@
 
     };
 
+    //Enter city and get forecast
     document.getElementById("submit").addEventListener("click", getForecast);
 
     function getForecast(event) {
@@ -32,11 +33,7 @@
         };      
     };
 
-    function getCity() {
-        city =  document.getElementById("city").value;
-        console.log(city)
-    };
-
+    //Get all the data from the API
     function getDataApi() {
         fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+key)
         .then(response => response.json())
@@ -48,6 +45,13 @@
         }); 
     };
 
+    //Get the city input
+    function getCity() {
+        city =  document.getElementById("city").value;
+        console.log(city)
+    };
+
+    //Add the weather for this moment 
     function getWeatherNow(d) {
         celcius = Math.round(parseFloat(d.list[0].main.temp)-273.15);
 
@@ -58,6 +62,7 @@
         document.getElementById("weatherimage").src = "images/"+d.list[0].weather[0].icon+".png"
     };
 
+    //Add the weather for the next five days
     function getWeatherNextDays(d) {
 
         date = new Date();
@@ -145,38 +150,4 @@
         
     };
 
-
-
-
-
-
-
-    /* function getCoordCity(d) {
-        lon = parseFloat(d.coord.lon);
-        lat = parseFloat(d.coord.lat);
-
-        console.log(lon + " " +lat);
-    }; 
-
-    function getForecastWeek() {
-
-        getCity();
-
-        fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+key)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);               
-        });
-
-    };
-
-    function getWeather(d) {
-        celcius = Math.round(parseFloat(d.main.temp)-273.15);
-
-        document.getElementById("title").innerHTML = "At this moment"
-        document.getElementById("description").innerHTML = d.weather[0].description;
-        document.getElementById("temp").innerHTML = celcius +"&#8451;";
-        document.getElementById("location").innerHTML = d.name;
-        document.getElementById("weatherimage").src = "images/"+d.weather[0].icon+".png"
-    };*/
 })();
