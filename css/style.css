@@ -1,0 +1,57 @@
+body {
+    background-color: #79a3b1;
+}
+
+.container {
+    display: grid;
+}
+
+.form {
+    margin: 20px auto;    
+    font-size: 25px;
+}
+
+/* TODO: if the city comes from the dropdown css needs to be the same*/
+input[type=text]:valid, [type=text]:focus {
+    background-color:  #79a3b1;
+    border: none;
+    border-bottom: 1px solid #456268;
+    width: 90px;
+}
+
+input[type=submit] {
+    background-color: #79a3b1;
+    border: none;
+
+}
+
+input[type=submit]:hover {
+    background-color: #81b2c28c; 
+}
+
+/* TODO: if there is no city input yet, the cards can't be showed */
+.card {
+    margin: 20px  auto;
+    background-color: #d0e8f2;
+}
+
+.card-group .card {
+    margin-left: 20px;
+}
+
+img {
+    max-width: 50%;
+    max-height: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+.card-img-top {
+    max-width: 80%;
+    max-height: 80%;
+    display: block;
+    margin: 10px auto;
+}
+
+
+
