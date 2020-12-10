@@ -21,7 +21,7 @@
     //Enter city and get forecast
     document.getElementById("submit").addEventListener("click", getForecast);
 
-    function getForecast(event) {
+    getForecast = (event) => {
         event.preventDefault();
 
         getCity();
@@ -34,7 +34,7 @@
     };
 
     //Get all the data from the API
-    function getDataApi() {
+    getDataApi = () => {
         fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+key)
         .then(response => response.json())
         .then(data => {
@@ -46,13 +46,13 @@
     };
 
     //Get the city input
-    function getCity() {
+    getCity = () => {
         city =  document.getElementById("city").value;
         console.log(city)
     };
 
     //Add the weather for this moment 
-    function getWeatherNow(data) {
+    getWeatherNow = (data) => {
         celcius = Math.round(parseFloat(data.list[0].main.temp)-273.15);
 
         document.getElementById("title").innerHTML = "At this moment"
@@ -63,7 +63,7 @@
     };
 
     //Add the weather for the next five days
-    function getWeatherNextDays(data) {
+    getWeatherNextDays = (data) => {
 
         date = new Date();
         date.setDate(date.getDate() + 1);
