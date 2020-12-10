@@ -11,7 +11,7 @@
     let tomorrow = day.slice(0,10);
     
     //When site is loaded, default city is selected
-    window.onload = function() {
+    window.onload = () => {
         city = "Brussel";
 
         getDataApi();
@@ -52,18 +52,18 @@
     };
 
     //Add the weather for this moment 
-    function getWeatherNow(d) {
-        celcius = Math.round(parseFloat(d.list[0].main.temp)-273.15);
+    function getWeatherNow(data) {
+        celcius = Math.round(parseFloat(data.list[0].main.temp)-273.15);
 
         document.getElementById("title").innerHTML = "At this moment"
-        document.getElementById("description").innerHTML = d.list[0].weather[0].description;
+        document.getElementById("description").innerHTML = data.list[0].weather[0].description;
         document.getElementById("temp").innerHTML = celcius +"&#8451;";
-        document.getElementById("location").innerHTML = d.city.name;
-        document.getElementById("weatherimage").src = "images/"+d.list[0].weather[0].icon+".png"
+        document.getElementById("location").innerHTML = data.city.name;
+        document.getElementById("weatherimage").src = "images/"+data.list[0].weather[0].icon+".png"
     };
 
     //Add the weather for the next five days
-    function getWeatherNextDays(d) {
+    function getWeatherNextDays(data) {
 
         date = new Date();
         date.setDate(date.getDate() + 1);
@@ -71,17 +71,17 @@
         tomorrow = day.slice(0,10);
         let i = 0;
         
-        while (tomorrow+" 12:00:00" != d.list[i].dt_txt) {
+        while (tomorrow+" 12:00:00" != data.list[i].dt_txt) {
             i++; 
             console.log(tomorrow+i);
         };
-        console.log(d.list[i].dt_txt);
-        document.getElementById("date1").innerHTML = d.list[i].dt_txt.slice(0,10);
-        document.getElementById("location1").innerHTML = d.city.name;
-        document.getElementById("description1").innerHTML = d.list[i].weather[0].description;
-        celcius1 = Math.round(parseFloat(d.list[i].main.temp)-273.15);
+        console.log(data.list[i].dt_txt);
+        document.getElementById("date1").innerHTML = data.list[i].dt_txt.slice(0,10);
+        document.getElementById("location1").innerHTML = data.city.name;
+        document.getElementById("description1").innerHTML = data.list[i].weather[0].description;
+        celcius1 = Math.round(parseFloat(data.list[i].main.temp)-273.15);
         document.getElementById("temp1").innerHTML = celcius1 +"&#8451;";
-        document.getElementById("weatherimage1").src = "images/"+d.list[i].weather[0].icon+".png"
+        document.getElementById("weatherimage1").src = "images/"+data.list[i].weather[0].icon+".png"
 
         date = new Date();
         date.setDate(date.getDate() + 2);
@@ -89,64 +89,64 @@
         tomorrow = day.slice(0,10);
         i=0;
 
-        while (tomorrow+" 12:00:00" != d.list[i].dt_txt) {
+        while (tomorrow+" 12:00:00" != data.list[i].dt_txt) {
             i++;
         };
 
-        document.getElementById("date2").innerHTML = d.list[i].dt_txt.slice(0,10);
-        document.getElementById("location2").innerHTML = d.city.name;
-        document.getElementById("description2").innerHTML = d.list[i].weather[0].description;
-        celcius2 = Math.round(parseFloat(d.list[i].main.temp)-273.15);
+        document.getElementById("date2").innerHTML = data.list[i].dt_txt.slice(0,10);
+        document.getElementById("location2").innerHTML = data.city.name;
+        document.getElementById("description2").innerHTML = data.list[i].weather[0].description;
+        celcius2 = Math.round(parseFloat(data.list[i].main.temp)-273.15);
         document.getElementById("temp2").innerHTML = celcius2 +"&#8451;";
-        document.getElementById("weatherimage2").src = "images/"+d.list[i].weather[0].icon+".png"
+        document.getElementById("weatherimage2").src = "images/"+data.list[i].weather[0].icon+".png"
 
         date = new Date();
         date.setDate(date.getDate() + 3);
         day = date.toISOString();
         tomorrow = day.slice(0,10);
 
-        while (tomorrow+" 12:00:00" != d.list[i].dt_txt) {
+        while (tomorrow+" 12:00:00" != data.list[i].dt_txt) {
             i++; 
         };
 
-        document.getElementById("date3").innerHTML = d.list[i].dt_txt.slice(0,10);
-        document.getElementById("location3").innerHTML = d.city.name;
-        document.getElementById("description3").innerHTML = d.list[i].weather[0].description;
-        celcius3 = Math.round(parseFloat(d.list[i].main.temp)-273.15);
+        document.getElementById("date3").innerHTML = data.list[i].dt_txt.slice(0,10);
+        document.getElementById("location3").innerHTML = data.city.name;
+        document.getElementById("description3").innerHTML = data.list[i].weather[0].description;
+        celcius3 = Math.round(parseFloat(data.list[i].main.temp)-273.15);
         document.getElementById("temp3").innerHTML = celcius3 +"&#8451;";
-        document.getElementById("weatherimage3").src = "images/"+d.list[i].weather[0].icon+".png"
+        document.getElementById("weatherimage3").src = "images/"+data.list[i].weather[0].icon+".png"
 
         date = new Date();
         date.setDate(date.getDate() + 4);
         day = date.toISOString();
         tomorrow = day.slice(0,10);
 
-        while (tomorrow+" 12:00:00" != d.list[i].dt_txt) {
+        while (tomorrow+" 12:00:00" != data.list[i].dt_txt) {
             i++;
         };
 
-        document.getElementById("date4").innerHTML = d.list[i].dt_txt.slice(0,10);
-        document.getElementById("location4").innerHTML = d.city.name;
-        document.getElementById("description4").innerHTML = d.list[i].weather[0].description;
-        celcius4 = Math.round(parseFloat(d.list[i].main.temp)-273.15);
+        document.getElementById("date4").innerHTML = data.list[i].dt_txt.slice(0,10);
+        document.getElementById("location4").innerHTML = data.city.name;
+        document.getElementById("description4").innerHTML = data.list[i].weather[0].description;
+        celcius4 = Math.round(parseFloat(data.list[i].main.temp)-273.15);
         document.getElementById("temp4").innerHTML = celcius4 +"&#8451;";
-        document.getElementById("weatherimage4").src = "images/"+d.list[i].weather[0].icon+".png"
+        document.getElementById("weatherimage4").src = "images/"+data.list[i].weather[0].icon+".png"
 
         date = new Date();
         date.setDate(date.getDate() + 5);
         day = date.toISOString();
         tomorrow = day.slice(0,10);
 
-        while (tomorrow+" 12:00:00" != d.list[i].dt_txt) {
+        while (tomorrow+" 12:00:00" != data.list[i].dt_txt) {
             i++; 
         };
         
-        document.getElementById("date5").innerHTML = d.list[i].dt_txt.slice(0,10);
-        document.getElementById("location5").innerHTML = d.city.name;
-        document.getElementById("description5").innerHTML = d.list[i].weather[0].description;
-        celcius5 = Math.round(parseFloat(d.list[i].main.temp)-273.15);
+        document.getElementById("date5").innerHTML = data.list[i].dt_txt.slice(0,10);
+        document.getElementById("location5").innerHTML = data.city.name;
+        document.getElementById("description5").innerHTML = data.list[i].weather[0].description;
+        celcius5 = Math.round(parseFloat(data.list[i].main.temp)-273.15);
         document.getElementById("temp5").innerHTML = celcius5 +"&#8451;";
-        document.getElementById("weatherimage5").src = "images/"+d.list[i].weather[0].icon+".png"
+        document.getElementById("weatherimage5").src = "images/"+data.list[i].weather[0].icon+".png"
         
     };
 
